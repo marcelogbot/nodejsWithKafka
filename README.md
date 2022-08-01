@@ -4,6 +4,6 @@ Apkicação para aprender a criar micro-serviços utilizando node.js com o Apach
 # O que foi utilizado:
 - Apache Zookeeper (Requisito para utilização do Kafka)
 - Apache Kafka (Serviço de mensageria)
-- Node.js
+- Node.js (Framework Express.js)
 - Nodemon
 - Kafkajs (framework para conexão entre o node.js e o Apache Kafka)

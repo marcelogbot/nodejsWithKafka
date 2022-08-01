@@ -1,11 +1,12 @@
-import { Kafka } from 'kafkajs';
+import { Kafka, CompressionTypes, logLevel } from 'kafkajs';
 
 const kafka = new Kafka({
+  clientId: 'consumer',
   brokers: ['localhost:9092'],
-  clientId: 'certificate',
+  logLevel: logLevel.WARN,
 })
 
-const topic = 'issue-certificate'
+const topic = 'test-publish'
 const consumer = kafka.consumer({ groupId: 'certificate-group' })
 
 const { Partitioners } = require('kafkajs')
@@ -18,19 +19,19 @@ async function run() {
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       const prefix = `${topic}[${partition} | ${message.offset}] / ${message.timestamp}`
-      console.log(`- ${prefix} ${message.key}#${message.value}`)
+      console.log(`- ${prefix} key=${message.key} #${message.value}`)
 
       const payload = JSON.parse(message.value);
 
-      // setTimeout(() => {
-     /* producer.send({
-        topic: 'certification-response',
-        messages: [
-          { value: `Certificado do usuário ${payload.user.name} do curso ${payload.course} gerado!` }
-        ]
-      })
-      // }, 3000);
-      */
+      setTimeout(() => { 
+        producer.send({
+          topic: 'certification-response',
+          compression: CompressionTypes.GZIP,
+          messages: [
+            { value: `Certificado do usuário ${payload.user.name} do curso ${payload.course} gerado!` }
+          ]
+        })
+      }, 3000);
     },
   })
 }

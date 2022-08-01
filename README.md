@@ -1,5 +1,5 @@
 # nodejsWithKafka
-Apkicação para aprender criar micro serviços com node.js utilizando o Apache Kafka.
+Apkicação para aprender a criar micro-serviços utilizando node.js com o Apache Kafka.
 
 # O que foi utilizado:
 - Apache Zookeeper (Requisito para utilização do Kafka)

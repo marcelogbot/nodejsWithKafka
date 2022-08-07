@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "kafkajs": "^2.1.0",
+    "nodemon": "^2.0.19"
+  }
+}

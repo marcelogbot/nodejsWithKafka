@@ -33,7 +33,7 @@ async function run() {
           topic: 'certification-response',
           compression: CompressionTypes.GZIP,
           messages: [
-            { value: `Dados do usuário ${payload.user.name} do curso ${payload.course} gerado!` }
+            { value: `Dados do usuário [${payload.user.name}] do curso [${payload.course}] gerado!` }
           ]
         })
      //}, 3000);
